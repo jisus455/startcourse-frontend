@@ -1,0 +1,17 @@
+.customCard{
+    border-radius: 20px;
+}
+
+.customCard .card-title{
+    font-weight: bold;
+    font-size: 12px;
+}
+
+.customCard .card-subtitle{
+    color: #0b7678;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+
+

@@ -1,0 +1,84 @@
+<app-navbar></app-navbar>
+
+<div class="container mb-4">
+    <router-outlet></router-outlet>
+</div>
+
+
+<div class="container">
+
+    <div class="row">
+
+        <div class="row mb-4">
+
+            <div class="col">
+                <a type="button" class="btn btn-success" href="articulos/agregar">Agregar</a>
+            </div>
+
+            <div class="col-10">
+                <div class="d-flex " role="search">
+                    <input class="form-control me-2" type="search" placeholder="Buscar por titulo" aria-label="Search" (input)="GetArticulosByTitulo()" [(ngModel)]="busqueda">
+                    <button class="btn btn-outline-primary" type="submit" (click)="GetArticulosByTitulo()">Buscar</button>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="col-3" *ngFor="let x of ArticulosData">
+            <div class="card mb-3">
+
+                <img src="{{x.Imagen}}" class="card-img-top" style="height: 200px;">
+                <div class="card-body">
+                    
+                    
+                    <h2 class="card-title">{{x.Titulo}}</h2>
+                    <div class="card-text">
+                        <h3 *ngIf="x.Categoria == 'Idiomas'" class="bg-info">{{x.Categoria}}</h3>
+                        <h3 *ngIf="x.Categoria == 'Programacion'" class="bg-danger">{{x.Categoria}}</h3>
+                        <h3 *ngIf="x.Categoria == 'Gastronomia'" class="bg-warning">{{x.Categoria}}</h3>
+
+
+                        <p class="text-center">{{x.Descripcion}}</p>
+                        <h2 class="text-center">${{x.Precio}}</h2>
+                        <p class="text-center">{{x.Vendidos}} vendidos</p>
+                    </div>
+
+                    <div class="col">
+                        <a type="button" class="btn btn-secondary me-2" href="articulos/editar"
+                            (click)="Editar(x)">Editar</a>
+
+                        <button type="button" data-bs-toggle="modal" class="btn btn-danger"
+                            data-bs-target="#eliminarModal" (click)="Eliminar(x)">Eliminar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+<!-- Modal Eliminar -->
+<div class="modal fade" id="eliminarModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="staticBackdropLabel">Eliminar articulo</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                ¿Estas seguro de eliminar a {{titulo}}?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn btn-danger" data-bs-dismiss="modal"
+                    (click)="DeleteArticulos()">Confirmar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<app-footer></app-footer>

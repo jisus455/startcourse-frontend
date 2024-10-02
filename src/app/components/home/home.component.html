@@ -1,0 +1,84 @@
+<app-navbar></app-navbar>
+
+
+<div class="container">
+    <form class="col-4 d-flex" role="search">
+        <input class="form-control me-2" type="search" placeholder="Buscar cualquier curso" aria-label="Search"
+            [(ngModel)]="busqueda">
+        <button class="btn btn-outline-success" type="button" (click)="GetArticulosByTitulo()">Buscar</button>
+    </form>
+</div>
+
+<hr>
+<hr>
+
+<div class="container">
+    <div class="row">
+        <div class="col-6" *ngFor="let x of ArticulosData">
+            <div class="card mb-3" style="max-width: 540px;"><!--*ngIf="x.Categoria == 'string'"-->
+                <div class="row g-0">
+                    <div class="col-md-4">
+                        <img src="{{x.Imagen}}" class="img-fluid rounded-start">
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-body">
+                            <h5 class="card-title">{{x.Titulo}}</h5>
+                            <ul class="card-text">
+                                <li>Categoria {{x.Categoria}}</li>
+                                <li>Descripcion {{x.Descripcion}}</li>
+                                <li>Vendidos {{x.Vendidos}}</li>
+                                <li>Valoracion {{x.Valoracion}}</li>
+                                <li>Precio {{x.Precio}}</li>
+                            </ul>
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<div class="container">
+
+    <h2>Ordenar y filtrar</h2>
+
+    <h4>Ordenar por</h4>
+
+    <div class="col-2 mb-4">
+
+        <select class="form-select">
+
+            <option selected>Mas relevantes</option>
+            <option value="1"><a type="submit" class="mt-2" (click)="GetArticulosByPrecioAsc()">Precio
+                    Ascendente</a></option>
+            <option value="2"><a type="submit" class="mt-2" (click)="GetArticulosByPrecioDesc()">Precio
+                    Descendente</a></option>
+            <option value="3"><a type="submit" class="mt-2" (click)="GetArticulosByVendidosDesc()">Vendidos
+                    Descendente</a></option>
+            <option value="4"> <a type="submit" class="mt-2" (click)="GetArticulosByValoracionDesc()">Valoracion
+                    Descendente</a></option>
+        </select>
+
+    </div>
+
+    <h4>Categorias</h4>
+
+    <div class="col-1">
+        <a type="submit" class="">Productividad</a>
+        <a type="submit" class="">Programacion</a>
+        <a type="submit" class="">Videojuegos</a>
+        <a type="submit" class="">Cocina</a>
+        <a type="submit" class="">Construccion</a>
+    </div>
+
+
+</div>
+
+
+
+<app-footer></app-footer>

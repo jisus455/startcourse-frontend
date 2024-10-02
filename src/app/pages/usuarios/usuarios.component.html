@@ -1,0 +1,250 @@
+<app-navbar></app-navbar>
+
+<!---->
+<div class="container p-4">
+
+    <h2>Configuracion de usuarios</h2>
+
+<div class="accordion" id="accordionExample">
+    <div class="accordion-item">
+      <h2 class="accordion-header">
+        <button class="accordion-button bg-light" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+          Tabla de usuarios
+        </button>
+      </h2>
+      <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
+        <div class="accordion-body">
+          
+            <h2>Tabla de usuarios</h2>
+            <p *ngIf="UsuariosData == ''">No results found</p>
+            <table class="table" *ngIf="UsuariosData != ''" style="width: 100%;">
+        
+                <thead>
+                    <td>Id</td>
+                    <td>Nombre</td>
+                    <td>Apellido</td>
+                    <td>Email</td>
+                    <td>Usuario</td>
+                    <td>Clave</td>
+                    <td>Estado</td>
+                    <td>Rol</td>
+                </thead>
+                <br>
+        
+                <tbody *ngFor="let item of UsuariosData">
+                    <td>{{item.Id}}</td>
+                    <td>{{item.Nombre}}</td>
+                    <td>{{item.Apellido}}</td>
+                    <td>{{item.Email}}</td>
+                    <td>{{item.Usuario}}</td>
+                    <td>{{item.Clave}}</td>
+                    <td>{{item.Estado}}</td>
+                    <td>{{item.Rol}}</td>
+        
+                    <button type="button" class="btn btn-primary me-2 mb-2 btn-sm" data-bs-toggle="modal"
+                        data-bs-target="#editarModal" (click)="GetDatos(item)">
+                        Editar
+                    </button>
+        
+                    <button type="button" class="btn btn-danger mb-2 btn-sm" data-bs-toggle="modal"
+                        data-bs-target="#eliminarModal" (click)="GetDatos(item)">
+                        Eliminar
+                    </button>
+                </tbody>
+        
+            </table>
+
+        </div>
+      </div>
+    </div>
+    <div class="accordion-item">
+      <h2 class="accordion-header">
+        <button class="accordion-button collapsed bg-light" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+          Agregar nuevo usuario
+        </button>
+      </h2>
+      <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+        <div class="accordion-body">
+         
+            <br>
+            <h2>Agregar nuevo usuario</h2>
+            <hr>
+        
+            <label>Nombre</label>
+            <input class="form-control" type="text" [(ngModel)]="nombre">
+        
+            <label>Apellido</label>
+            <input class="form-control" type="text" [(ngModel)]="apellido">
+        
+            <label>Email</label>
+            <input class="form-control" type="text" [(ngModel)]="email">
+        
+            <label>Usuario</label>
+            <input class="form-control" type="text" [(ngModel)]="usuario">
+        
+            <label>Clave</label>
+            <input class="form-control" type="text" [(ngModel)]="clave">
+        
+            <label>Estado</label>
+            <input class="form-control" type="text" [(ngModel)]="estado">
+        
+            <label>Rol</label>
+            <input class="form-control" type="text" [(ngModel)]="rol">
+        
+            <button class="btn btn-success mt-4" (click)="PostUsuarios()">Agregar usuario</button>
+
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</div>
+
+
+
+
+
+
+<!-- Modal Eliminar -->
+<div class="modal fade" id="eliminarModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="staticBackdropLabel">Eliminar usuario</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                ¿Estas seguro de eliminar a {{nombre}} {{apellido}}?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn btn-danger" data-bs-dismiss="modal"
+                    (click)="DeleteUser()">Confirmar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!---->
+
+<!-- Modal Editar -->
+<div class="modal fade" id="editarModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title" id="staticBackdropLabel">Actualizar registro</h2>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+
+            <div class="modal-body">
+                
+              <div class="row g-3">
+
+                    <div class="row p-3 pb-2">
+
+                        <div class="col">
+                            <label class="form-label">Nombre</label>
+                            <div class="input-group">
+                                <input class="form-control" type="text" [(ngModel)]="nombre">
+                            </div>
+                        </div>
+
+                        <div class="col">
+                            <label class="form-label">Apellido</label>
+                            <div class="input-group">
+                                <input class="form-control" type="text" [(ngModel)]="apellido">
+                            </div>
+                        </div>
+
+                    </div>
+
+
+                    <div class="row p-3 pb-2">
+
+                        <div class="col">
+                            <label class="form-label">Email</label>
+
+                            <div class="input-group">
+                                <input class="form-control" type="email" [(ngModel)]="email">
+                            </div>
+                        </div>
+
+                    </div>
+
+
+                    <div class="row p-3 pb-2">
+                        <div class="col">
+                            <label class="form-label">Rol</label>
+
+                            <div class="input-group">
+
+                                <select class="form-select" [(ngModel)]="rol">
+                                    <option selected>Usuario</option>
+                                    <option>Invitado</option>
+                                    <option>Administrador</option>
+                                  </select>
+                            </div>
+
+                        </div>
+
+                        <div class="col">
+                            <label class="form-label">Estado</label>
+
+                            <div class="input-group">
+
+                                <select class="form-select" [(ngModel)]="estado">
+                                    <option selected>Habilitado</option>
+                                    <option>No habilitado</option>
+                                  </select>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div class="row p-3 pb-2">
+
+                        <div class="col">
+                            <label class="form-label">Usuario</label>
+
+                            <div class="input-group">
+                                <input class="form-control" type="text" [(ngModel)]="usuario">
+                            </div>
+                        </div>
+
+                        <div class="col">
+                            <label class="form-label">Contraseña</label>
+
+                            <div class="input-group">
+                                <input class="form-control" type="text" [(ngModel)]="clave">
+                            </div>
+                        </div>
+
+                    </div>
+
+              </div>
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn btn-danger" data-bs-dismiss="modal"
+                    (click)="UpdateUser()">Confirmar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<!---->
+
+
+
+
+<app-footer></app-footer>

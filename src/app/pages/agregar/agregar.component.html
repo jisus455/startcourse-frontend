@@ -1,0 +1,31 @@
+<div class="container">
+
+    <br>
+    <h2>Agregar nuevo articulo</h2>
+    <hr>
+
+    <label>Titulo</label>
+    <input class="form-control" type="text" [(ngModel)]="titulo">
+
+    <label>Categoria</label>
+    <input class="form-control" type="text" [(ngModel)]="categoria">
+
+    <label>Descripcion</label>
+    <input class="form-control" type="text" [(ngModel)]="descripcion">
+
+    <label>Valoracion</label>
+    <input class="form-control" type="number" [(ngModel)]="valoracion">
+
+    <label>Precio</label>
+    <input class="form-control" type="number" [(ngModel)]="precio">
+
+    <label>Vendidos</label>
+    <input class="form-control" type="number" [(ngModel)]="vendidos">
+
+    <label>Imagen</label>
+    <input class="form-control" type="text" [(ngModel)]="imagen">
+
+    <a class="btn btn-success mt-4" (click)="PostArticulos()" href="articulos">Agregar nuevo</a>
+    
+</div>
+

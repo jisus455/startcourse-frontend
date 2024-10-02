@@ -1,0 +1,21 @@
+<div class="container col-3 mt-5 bg-light rounded border border-primary">
+    <br>
+
+    <h2 class="text-center">Iniciar Seccion</h2>
+    <hr>
+
+    <label>Usuario</label>
+    <input type="text" class="form-control" [(ngModel)]="usuario">
+    <br><br>
+
+    <label>Clave</label>
+    <input type="password" class="form-control" [(ngModel)]="clave">
+    <br><br>
+
+    <div class="row container">
+        <button type="button" class="btn btn-primary mb-4 ms-2" (click)="Ingresar()">Ingresar</button>
+    </div>
+
+    <p class="text-center">{{mensaje}}</p>
+
+</div>

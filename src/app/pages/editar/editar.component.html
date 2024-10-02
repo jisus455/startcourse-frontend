@@ -1,0 +1,24 @@
+<div class="container">
+
+    <br>
+    <h2>Editar articulo</h2>
+    <hr>
+
+    <label>Titulo</label>
+    <input class="form-control" type="text" [(ngModel)]="titulo">
+
+    <label>Categoria</label>
+    <input class="form-control" type="text" [(ngModel)]="categoria">
+
+    <label>Descripcion</label>
+    <input class="form-control" type="text" [(ngModel)]="descripcion">
+
+    <label>Precio</label>
+    <input class="form-control" type="text" [(ngModel)]="precio">
+
+    <label>Imagen</label>
+    <input class="form-control" type="text" [(ngModel)]="imagen">
+
+    <a class="btn btn-primary mt-4" (click)="UpdateArticulos()" href="articulos">Editar</a>
+    
+</div>

@@ -1,0 +1,89 @@
+<app-navbar></app-navbar>
+
+<div class="container" *ngIf="!editar">
+    <br>
+    <h1>Configurar pagina</h1>
+    <hr>
+
+    <label>Titulo</label>
+    <input class="form-control" type="text" [value]="titulo" disabled>
+
+    <label>Subtitulo</label>
+    <input class="form-control" type="text" [value]="subtitulo" disabled>
+
+    <label>Menu</label>
+    <input class="form-control" type="text" [value]="menu" disabled>
+
+    <label>Footer</label>
+    <input class="form-control" type="text" [value]="footer" disabled>
+
+    <label>Color Primario</label>
+    <input class="form-control" type="text" [value]="colorP" disabled>
+
+    <label>Color Secundario</label>
+    <input class="form-control" type="text" [value]="colorS" disabled>
+
+    <label>Logo</label>
+    <input class="form-control" type="text" [value]="logo" disabled>
+
+    <button class="btn btn-success mt-4 me-2" disabled>Guardar datos</button>
+    <button class="btn btn-success mt-4" (click)="EditarDatos()">Editar datos</button>
+</div>
+
+<div class="container" *ngIf="editar">
+    <br>
+    <h2>Configurar pagina</h2>
+    <hr>
+
+    <label>Titulo</label>
+    <input class="form-control" type="text" [(ngModel)]="titulo" [placeholder]="titulo" >
+
+    <label>Subtitulo</label>
+    <input class="form-control" type="text" [(ngModel)]="subtitulo" [placeholder]="subtitulo" >
+
+    <label>Menu</label>
+    <input class="form-control" type="text" [(ngModel)]="menu" [placeholder]="menu">
+
+    <label>Footer</label>
+    <input class="form-control" type="text" [(ngModel)]="footer" [placeholder]="footer" >
+
+    <label>Color Primario</label>
+    <input class="form-control" type="text" [(ngModel)]="colorP" [placeholder]="colorP">
+
+    <label>Color Secundario</label>
+    <input class="form-control" type="text" [(ngModel)]="colorS" [placeholder]="colorS" >
+
+    <label>Logo</label>
+    <input class="form-control" type="text" [(ngModel)]="logo" [placeholder]="logo">
+
+    <button class="btn btn-success mt-4 me-2" (click)="GuardarDatos()">Guardar datos</button>
+    <button class="btn btn-secondary mt-4 me-2" data-bs-toggle="modal" data-bs-target="#imagenModal">Probar Imagen</button>
+
+</div>
+
+    <!-- Modal Imagen  -->
+    <div class="modal fade" id="imagenModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+        aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Imagen Logo</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <img src="{{logo}}">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Continuar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+<app-footer></app-footer>
+
+
